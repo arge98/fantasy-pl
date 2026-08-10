@@ -3,6 +3,7 @@ import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
 import SignOutButton from "./sign-out-button";
 import StadiumBackground from "./stadium-background";
+import Link from "next/link";
 
 type Member = {
   email: string;
@@ -76,7 +77,17 @@ export default async function Home() {
             The League
           </span>
         </div>
-        <SignOutButton />
+
+        <div className="flex items-center gap-6">
+          <Link
+            href="/constitution"
+            className="text-sm font-semibold text-cream-100 transition hover:text-gold-400"
+          >
+            Constitution
+          </Link>
+          
+          <SignOutButton />
+        </div> 
       </header>
 
       {/* min-h forces scroll room while there's little real content; drop it once standings/fixtures fill the page naturally */}
