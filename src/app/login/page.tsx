@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useSearchParams } from "next/navigation";
 import { Suspense, useState } from "react";
 import { createClient } from "@/lib/supabase/client";
@@ -44,10 +45,21 @@ function LoginForm() {
   }
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center gap-6 px-4">
+    <main className="flex min-h-screen flex-col items-center justify-center gap-8 px-4">
+      <Image
+        src="/league-logo.jpg"
+        alt="English Premier League Fantasy — 2026 Season"
+        width={220}
+        height={220}
+        priority
+        className="rounded-full shadow-[0_0_60px_-10px_rgba(203,161,79,0.45)]"
+      />
+
       <div className="flex flex-col items-center gap-2 text-center">
-        <h1 className="text-2xl font-semibold">Fantasy PL</h1>
-        <p className="text-sm text-neutral-500">
+        <h1 className="text-2xl font-semibold tracking-wide text-cream-100">
+          Welcome to the League
+        </h1>
+        <p className="text-sm text-cream-100/60">
           Sign in with the Google account you gave the league.
         </p>
       </div>
@@ -55,7 +67,7 @@ function LoginForm() {
       <button
         onClick={signInWithGoogle}
         disabled={loading}
-        className="flex items-center gap-3 rounded-md border border-neutral-300 px-4 py-2 text-sm font-medium hover:bg-neutral-50 disabled:opacity-50 dark:border-neutral-700 dark:hover:bg-neutral-900"
+        className="flex items-center gap-3 rounded-md border border-gold-500/40 bg-navy-900 px-5 py-2.5 text-sm font-medium text-cream-100 transition-colors hover:bg-navy-800 disabled:opacity-50"
       >
         <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true">
           <path
@@ -78,7 +90,7 @@ function LoginForm() {
         {loading ? "Redirecting…" : "Continue with Google"}
       </button>
 
-      {error && <p className="text-sm text-red-500">{error}</p>}
+      {error && <p className="text-sm text-red-400">{error}</p>}
     </main>
   );
 }
