@@ -22,7 +22,6 @@ create policy "league members are readable by authenticated users"
 insert into league_members (email, display_name, is_admin)
 values
   ('argelrh9@gmail.com', 'Argel', true),
-  ('gabriel.blanco@utexas.edu', 'Gabriel', false),
-  ('javier.sardinas@gmail.com', 'Javier', false),
-  ('gb25587@my.utexas.edu', 'Gabriel B', false)
+  ('gabilondo12321@gmail.com', 'Gabriel', false),
+  ('javier.sardinas@gmail.com', 'Javier', false)
 on conflict (email) do nothing;
