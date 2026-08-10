@@ -6,10 +6,28 @@ Router) + Supabase (Postgres + Auth), deployed on Vercel.
 ## Stack
 
 - **Next.js 16** — UI and API routes, React under the hood
-- **Supabase** — Postgres database, and Google-only auth
+- **Supabase** — Postgres database, and auth (Google sign-in + magic link email)
 - **Vercel** — hosting, free tier, connects a custom domain later
 
-## One-time setup (do this before `npm run dev` will work)
+## Setup for developers joining the project
+
+The Supabase project and Google OAuth app already exist — you don't need to
+create anything, just connect to what's already there:
+
+1. Clone the repo and `npm install`.
+2. Copy `.env.local.example` to `.env.local` and ask Argel for the two
+   Supabase values to paste in (they're the public/publishable key, safe to
+   share — not a secret).
+3. Make sure your email has been added to `league_members` in Supabase and,
+   if you're using Google sign-in, added as a Google test user — ask Argel,
+   this is a one-line SQL insert plus a dashboard click on his end.
+4. `npm run dev`, open [http://localhost:3000](http://localhost:3000), sign
+   in with your email.
+
+You can also just test against the live site directly at the Vercel URL —
+no local setup needed for that, only for when you're changing code.
+
+## Initial project setup (already done — kept here for reference)
 
 ### 1. Create the Supabase project
 
@@ -54,10 +72,11 @@ to `/login`. Sign in with an email that's in `league_members` and you're in.
 
 - `src/proxy.ts` — runs on every request, redirects signed-out users to
   `/login` and keeps the Supabase session cookie fresh.
-- `src/app/login/page.tsx` — the Google sign-in button.
-- `src/app/auth/callback/route.ts` — where Google sends the user back after
-  sign-in; this is also where we check the email against `league_members`
-  and reject anyone not on the list.
+- `src/app/login/page.tsx` — the Google sign-in button and the magic-link
+  email form (an alternative for members without a Google account).
+- `src/app/auth/callback/route.ts` — where both sign-in methods land after
+  completing; this is also where we check the email against
+  `league_members` and reject anyone not on the list.
 - `src/lib/supabase/` — the three Supabase client variants Next.js needs
   (browser, server component, proxy).
 
