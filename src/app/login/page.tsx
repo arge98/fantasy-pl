@@ -2,11 +2,11 @@
 
 import Image from "next/image";
 import { useSearchParams } from "next/navigation";
-import { Suspense, useState } from "react";
+import { Suspense, useState, type FormEvent } from "react";
 import { createClient } from "@/lib/supabase/client";
 
 const ERROR_MESSAGES: Record<string, string> = {
-  not_a_member: "That Google account isn't on the league's member list yet.",
+  not_a_member: "That email isn't on the league's member list yet.",
   auth_failed: "Something went wrong signing you in. Try again.",
 };
 
@@ -25,6 +25,8 @@ function LoginForm() {
   const [error, setError] = useState<string | null>(
     urlError ? ERROR_MESSAGES[urlError] ?? "Sign-in failed." : null,
   );
+  const [email, setEmail] = useState("");
+  const [magicLinkSent, setMagicLinkSent] = useState(false);
 
   async function signInWithGoogle() {
     setLoading(true);
@@ -41,6 +43,27 @@ function LoginForm() {
     if (error) {
       setError(error.message);
       setLoading(false);
+    }
+  }
+
+  async function sendMagicLink(e: FormEvent) {
+    e.preventDefault();
+    setLoading(true);
+    setError(null);
+
+    const supabase = createClient();
+    const { error } = await supabase.auth.signInWithOtp({
+      email,
+      options: {
+        emailRedirectTo: `${window.location.origin}/auth/callback`,
+      },
+    });
+
+    setLoading(false);
+    if (error) {
+      setError(error.message);
+    } else {
+      setMagicLinkSent(true);
     }
   }
 
@@ -89,6 +112,40 @@ function LoginForm() {
         </svg>
         {loading ? "Redirecting…" : "Continue with Google"}
       </button>
+
+      <div className="flex w-full max-w-xs items-center gap-3 text-xs text-cream-100/40">
+        <div className="h-px flex-1 bg-gold-500/20" />
+        or
+        <div className="h-px flex-1 bg-gold-500/20" />
+      </div>
+
+      {magicLinkSent ? (
+        <p className="max-w-xs text-center text-sm text-cream-100/70">
+          Check <span className="text-cream-100">{email}</span> for a sign-in
+          link.
+        </p>
+      ) : (
+        <form
+          onSubmit={sendMagicLink}
+          className="flex w-full max-w-xs flex-col gap-3"
+        >
+          <input
+            type="email"
+            required
+            placeholder="you@example.com"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            className="rounded-md border border-gold-500/25 bg-navy-900 px-3 py-2 text-sm text-cream-100 placeholder:text-cream-100/30 outline-none focus:border-gold-500/60"
+          />
+          <button
+            type="submit"
+            disabled={loading}
+            className="rounded-md border border-gold-500/40 px-4 py-2 text-sm font-medium text-cream-100 transition-colors hover:bg-navy-800 disabled:opacity-50"
+          >
+            {loading ? "Sending…" : "Email me a sign-in link"}
+          </button>
+        </form>
+      )}
 
       {error && <p className="text-sm text-red-400">{error}</p>}
     </main>
