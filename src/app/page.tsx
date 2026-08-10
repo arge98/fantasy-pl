@@ -2,6 +2,45 @@ import Image from "next/image";
 import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
 import SignOutButton from "./sign-out-button";
+import StadiumBackground from "./stadium-background";
+
+type Member = {
+  email: string;
+  display_name: string;
+  is_admin: boolean;
+};
+
+function initials(name: string) {
+  return name
+    .split(" ")
+    .map((part) => part[0])
+    .join("")
+    .slice(0, 2)
+    .toUpperCase();
+}
+
+function MemberAvatar({ name }: { name: string }) {
+  return (
+    <div className="flex h-14 w-14 items-center justify-center rounded-full border border-gold-500/40 bg-navy-800 text-sm font-semibold text-gold-300">
+      {initials(name)}
+    </div>
+  );
+}
+
+const COMING_SOON = [
+  {
+    title: "Standings",
+    description: "The full league table for the current season.",
+  },
+  {
+    title: "Fixtures",
+    description: "Upcoming gameweeks and matchups.",
+  },
+  {
+    title: "Stats",
+    description: "Biggest scores, best picks, head-to-head records.",
+  },
+] as const;
 
 export default async function Home() {
   const supabase = await createClient();
@@ -13,9 +52,18 @@ export default async function Home() {
     redirect("/login");
   }
 
+  const { data: members } = await supabase
+    .from("league_members")
+    .select("email, display_name, is_admin")
+    .order("display_name") as { data: Member[] | null };
+
+  const me = members?.find((m) => m.email === user.email);
+
   return (
     <>
-      <header className="flex items-center justify-between border-b border-gold-500/15 px-6 py-4">
+      <StadiumBackground />
+
+      <header className="sticky top-0 z-10 flex items-center justify-between border-b border-gold-500/15 bg-navy-950/70 px-6 py-4 backdrop-blur-sm">
         <div className="flex items-center gap-3">
           <Image
             src="/league-logo.jpg"
@@ -31,14 +79,58 @@ export default async function Home() {
         <SignOutButton />
       </header>
 
-      <main className="flex flex-1 flex-col items-center justify-center gap-3 px-4 text-center">
-        <h1 className="text-2xl font-semibold text-cream-100">
-          You&apos;re in.
-        </h1>
-        <p className="text-sm text-cream-100/60">
-          Signed in as {user.email}. The league table, fixtures, and
-          everything else gets built from here.
-        </p>
+      <main className="relative z-10 mx-auto flex w-full max-w-4xl flex-1 flex-col gap-10 px-6 py-10">
+        <div>
+          <h1 className="text-2xl font-semibold text-cream-100">
+            Welcome back, {me?.display_name ?? user.email}.
+          </h1>
+          <p className="mt-1 text-sm text-cream-100/60">
+            English Premier League Fantasy — 2026 Season
+          </p>
+        </div>
+
+        <section className="grid grid-cols-1 gap-4 sm:grid-cols-3">
+          {COMING_SOON.map((item) => (
+            <div
+              key={item.title}
+              className="rounded-lg border border-gold-500/15 bg-navy-900/60 p-4"
+            >
+              <div className="flex items-center justify-between">
+                <h2 className="text-sm font-semibold text-cream-100">
+                  {item.title}
+                </h2>
+                <span className="rounded-full border border-gold-500/30 px-2 py-0.5 text-[10px] uppercase tracking-wide text-gold-300">
+                  Coming soon
+                </span>
+              </div>
+              <p className="mt-2 text-xs text-cream-100/50">
+                {item.description}
+              </p>
+            </div>
+          ))}
+        </section>
+
+        <section>
+          <h2 className="text-sm font-semibold uppercase tracking-wide text-cream-100/70">
+            Members
+          </h2>
+          <div className="mt-4 grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4">
+            {members?.map((member) => (
+              <div
+                key={member.email}
+                className="flex flex-col items-center gap-2 text-center"
+              >
+                <MemberAvatar name={member.display_name} />
+                <span className="text-xs text-cream-100/80">
+                  {member.display_name}
+                  {member.is_admin && (
+                    <span className="ml-1 text-gold-300">★</span>
+                  )}
+                </span>
+              </div>
+            ))}
+          </div>
+        </section>
       </main>
     </>
   );
