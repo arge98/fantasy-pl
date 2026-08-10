@@ -1,36 +1,69 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Fantasy PL
 
-## Getting Started
+Private site for our 12-person Fantasy Premier League group. Next.js (App
+Router) + Supabase (Postgres + Auth), deployed on Vercel.
 
-First, run the development server:
+## Stack
+
+- **Next.js 16** — UI and API routes, React under the hood
+- **Supabase** — Postgres database, and Google-only auth
+- **Vercel** — hosting, free tier, connects a custom domain later
+
+## One-time setup (do this before `npm run dev` will work)
+
+### 1. Create the Supabase project
+
+1. Go to [supabase.com](https://supabase.com), create a free account and a
+   new project.
+2. In **Project Settings > API**, copy the **Project URL** and the
+   **anon public** key.
+3. Copy `.env.local.example` to `.env.local` and paste those two values in.
+
+### 2. Set up Google sign-in
+
+1. In the Supabase dashboard: **Authentication > Providers > Google**,
+   toggle it on.
+2. You'll need a Google OAuth Client ID/Secret from the
+   [Google Cloud Console](https://console.cloud.google.com/apis/credentials) —
+   Supabase's provider page links directly to the instructions and gives you
+   the exact redirect URL to paste into the Google OAuth consent screen.
+3. In **Authentication > URL Configuration**, add
+   `http://localhost:3000/auth/callback` as a redirect URL (add your real
+   domain there too once you have one).
+
+### 3. Create the database + allow-list
+
+1. In the Supabase dashboard, open **SQL Editor**, paste in the contents of
+   [`supabase/schema.sql`](./supabase/schema.sql), and run it.
+2. Edit the `insert into league_members` line first (or just add rows via
+   **Table Editor** afterwards) so it has your email, then add the other 11
+   friends' emails the same way. Only emails in this table are allowed to
+   sign in — Google auth alone doesn't restrict who can log in, this table
+   is what does.
+
+### 4. Run it
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) — you'll be redirected
+to `/login`. Sign in with an email that's in `league_members` and you're in.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## How auth works here
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- `src/proxy.ts` — runs on every request, redirects signed-out users to
+  `/login` and keeps the Supabase session cookie fresh.
+- `src/app/login/page.tsx` — the Google sign-in button.
+- `src/app/auth/callback/route.ts` — where Google sends the user back after
+  sign-in; this is also where we check the email against `league_members`
+  and reject anyone not on the list.
+- `src/lib/supabase/` — the three Supabase client variants Next.js needs
+  (browser, server component, proxy).
 
-## Learn More
+## Deploying
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Push this to a GitHub repo, import it into [Vercel](https://vercel.com/new),
+and add the two `NEXT_PUBLIC_SUPABASE_*` env vars in the Vercel project
+settings. Then add your real domain's callback URL in Supabase's
+**URL Configuration** once you've bought one.
