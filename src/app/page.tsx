@@ -79,7 +79,8 @@ export default async function Home() {
         <SignOutButton />
       </header>
 
-      <main className="relative z-10 mx-auto flex w-full max-w-4xl flex-1 flex-col gap-14 px-6 py-14">
+      {/* min-h forces scroll room while there's little real content; drop it once standings/fixtures fill the page naturally */}
+      <main className="relative z-10 mx-auto flex w-full max-w-4xl flex-1 flex-col gap-14 px-6 py-14 min-h-[130vh]">
         <div>
           <h1 className="text-2xl font-semibold text-cream-100">
             Welcome back, {me?.display_name ?? user.email}.
