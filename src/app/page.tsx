@@ -79,7 +79,7 @@ export default async function Home() {
         <SignOutButton />
       </header>
 
-      <main className="relative z-10 mx-auto flex w-full max-w-4xl flex-1 flex-col gap-10 px-6 py-10">
+      <main className="relative z-10 mx-auto flex w-full max-w-4xl flex-1 flex-col gap-14 px-6 py-14">
         <div>
           <h1 className="text-2xl font-semibold text-cream-100">
             Welcome back, {me?.display_name ?? user.email}.
@@ -131,6 +131,19 @@ export default async function Home() {
             ))}
           </div>
         </section>
+
+        <footer className="flex flex-col items-center gap-3 border-t border-gold-500/15 pt-10 pb-16 text-center">
+          <Image
+            src="/league-logo.jpg"
+            alt="English Premier League Fantasy"
+            width={48}
+            height={48}
+            className="rounded-full opacity-70"
+          />
+          <p className="text-xs text-cream-100/40">
+            English Premier League Fantasy — 2026 Season · {members?.length ?? 0} members
+          </p>
+        </footer>
       </main>
     </>
   );
