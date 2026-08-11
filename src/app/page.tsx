@@ -85,9 +85,16 @@ export default async function Home() {
           >
             Constitution
           </Link>
-          
+
+          <Link
+            href="/franquicias"
+            className="text-sm font-semibold text-cream-100 transition hover:text-gold-400"
+          >
+            Franquicias
+          </Link>
+
           <SignOutButton />
-        </div> 
+        </div>
       </header>
 
       {/* min-h forces scroll room while there's little real content; drop it once standings/fixtures fill the page naturally */}
