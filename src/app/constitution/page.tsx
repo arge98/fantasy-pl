@@ -2,6 +2,7 @@ import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
 import StadiumBackground from "../stadium-background";
 import SignOutButton from "../sign-out-button";
+import Header from "@/components/Header";
 
 export default async function ConstitutionPage() {
   const supabase = await createClient();
@@ -18,24 +19,7 @@ export default async function ConstitutionPage() {
     <>
       <StadiumBackground />
 
-      <header className="sticky top-0 z-10 flex items-center justify-between border-b border-gold-500/15 bg-navy-950/70 px-6 py-4 backdrop-blur-sm">
-        <div className="flex items-center gap-3">
-          <span className="text-sm font-semibold tracking-wide text-cream-100">
-            The League
-          </span>
-        </div>
-
-        <div className="flex items-center gap-6">
-          <a
-            href="/constitution"
-            className="text-sm font-semibold text-gold-300"
-          >
-            Constitution
-          </a>
-
-          <SignOutButton />
-        </div>
-      </header>
+      <Header />
 
       <main className="relative z-10 mx-auto w-full max-w-4xl px-6 py-14">
         <article className="rounded-xl border border-gold-500/15 bg-navy-950/80 p-8 backdrop-blur-sm">

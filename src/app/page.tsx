@@ -4,6 +4,7 @@ import { createClient } from "@/lib/supabase/server";
 import SignOutButton from "./sign-out-button";
 import StadiumBackground from "./stadium-background";
 import Link from "next/link";
+import Header from "@/components/Header";
 
 type Member = {
   email: string;
@@ -64,38 +65,7 @@ export default async function Home() {
     <>
       <StadiumBackground />
 
-      <header className="sticky top-0 z-10 flex items-center justify-between border-b border-gold-500/15 bg-navy-950/70 px-6 py-4 backdrop-blur-sm">
-        <div className="flex items-center gap-3">
-          <Image
-            src="/league-logo.jpg"
-            alt="English Premier League Fantasy"
-            width={36}
-            height={36}
-            className="rounded-full"
-          />
-          <span className="text-sm font-semibold tracking-wide text-cream-100">
-            The League
-          </span>
-        </div>
-
-        <div className="flex items-center gap-6">
-          <Link
-            href="/constitution"
-            className="text-sm font-semibold text-cream-100 transition hover:text-gold-400"
-          >
-            Constitution
-          </Link>
-
-          <Link
-            href="/franquicias"
-            className="text-sm font-semibold text-cream-100 transition hover:text-gold-400"
-          >
-            Franquicias
-          </Link>
-
-          <SignOutButton />
-        </div>
-      </header>
+      <Header />
 
       {/* min-h forces scroll room while there's little real content; drop it once standings/fixtures fill the page naturally */}
       <main className="relative z-10 mx-auto flex w-full max-w-4xl flex-1 flex-col gap-14 px-6 py-14 min-h-[130vh]">
