@@ -23,5 +23,6 @@ insert into league_members (email, display_name, is_admin)
 values
   ('argelrh9@gmail.com', 'Argel', true),
   ('gabilondo12321@gmail.com', 'Gabriel', false),
-  ('javier.sardinas@gmail.com', 'Javier', false)
+  ('javier.sardinas@gmail.com', 'Javier', false),
+  ('cr7cristianoelanimal@gmail.com', 'Alberto', false)
 on conflict (email) do nothing;
