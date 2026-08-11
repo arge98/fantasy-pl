@@ -1,9 +1,7 @@
 import { redirect } from "next/navigation";
 import Image from "next/image";
-import Link from "next/link";
 import { createClient } from "@/lib/supabase/server";
 import StadiumBackground from "../stadium-background";
-import SignOutButton from "../sign-out-button";
 import Header from "@/components/Header";
 
 const franchises = [

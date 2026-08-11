@@ -1,7 +1,6 @@
 import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
 import StadiumBackground from "../stadium-background";
-import SignOutButton from "../sign-out-button";
 import Header from "@/components/Header";
 
 export default async function ConstitutionPage() {

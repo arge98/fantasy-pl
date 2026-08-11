@@ -1,9 +1,7 @@
 import Image from "next/image";
 import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
-import SignOutButton from "./sign-out-button";
 import StadiumBackground from "./stadium-background";
-import Link from "next/link";
 import Header from "@/components/Header";
 
 type Member = {
