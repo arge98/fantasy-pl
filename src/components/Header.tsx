@@ -37,6 +37,13 @@ export default function Header() {
                 </Link>
 
                 <Link
+                    href="/leadership"
+                    className="text-sm font-semibold text-cream-100 transition hover:text-gold-400"
+                >
+                    Liderazgo
+                </Link>
+
+                <Link
                     href="/history"
                     className="text-sm font-semibold text-cream-100 transition hover:text-gold-400"
                 >
