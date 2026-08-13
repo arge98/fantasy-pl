@@ -1,13 +1,16 @@
 @import "tailwindcss";
 
 :root {
-  --navy-950: #0a0f24;
-  --navy-900: #10173a;
-  --navy-800: #182252;
-  --gold-300: #e8c976;
-  --gold-500: #cba14f;
-  --gold-600: #a97d2f;
-  --cream-100: #f5ecd8;
+  --navy-950: #0b0010;
+  --navy-900: #120016;
+  --navy-800: #37003c;
+
+  --gold-300: #00ff85;
+  --gold-400: #00e878;
+  --gold-500: #e9007f;
+  --gold-600: #963cff;
+
+  --cream-100: #ffffff;
 
   --background: var(--navy-950);
   --foreground: var(--cream-100);
@@ -16,9 +19,11 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-navy-950: var(--navy-950);
   --color-navy-900: var(--navy-900);
   --color-navy-800: var(--navy-800);
   --color-gold-300: var(--gold-300);
+  --color-gold-400: var(--gold-400);
   --color-gold-500: var(--gold-500);
   --color-gold-600: var(--gold-600);
   --color-cream-100: var(--cream-100);
@@ -28,16 +33,7 @@
 
 body {
   min-height: 100%;
-  background-color: var(--navy-950);
-  background-image:
-    radial-gradient(circle at 50% 0%, var(--navy-800) 0%, var(--navy-950) 55%),
-    repeating-linear-gradient(
-      45deg,
-      rgba(255, 255, 255, 0.025) 0px,
-      rgba(255, 255, 255, 0.025) 1px,
-      transparent 1px,
-      transparent 14px
-    );
+  background: var(--navy-950);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
