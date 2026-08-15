@@ -14,19 +14,21 @@ const franchises = [
   {
     name: "Meet Your Daddy",
     image: "/franchises/Meet Your Daddy.jpg",
+    manager: "Javier",
     description:
       "Tras su irrupción en la competición la temporada pasada, este club se convirtió en la gran revelación del certamen al sostener una encarnizada lucha por el título durante prácticamente toda la campaña. De cara a su segundo ciclo consecutivo en la asociación, la franquicia afronta el nuevo año con la madurez adquirida y el objetivo inequívoco de culminar la obra iniciada, buscando reclamar la gloria absoluta que se le escapó en el tramo final de su torneo debut.",
   },
   {
     name: "El Pantano 913 FC",
     image: "/franchises/El Pantano 913 FC.jpg",
+    manager: "Damir",
     description:
       "Surgida en el año 2024 como una de las escuadras fundadoras de la organización, esta franquicia se distingue por su trayectoria impredecible, marcada por profundas oscilaciones en la tabla de posiciones y una permanente presencia en el centro de la polémica. Caracterizado por su espíritu combativo e irreverente, el club afronta la presente campaña con la firme ambición institucional de romper su sequía histórica y conquistar finalmente su primer título oficial en la competición.",
   },
   {
     name: "Narra Football Federation",
     image: "/franchises/Narra Football Federation.jpg",
-    manager: "Argelio",
+    manager: "Argel",
     description:
       "Surgida en la temporada inaugural de 2024, esta escuadra atravesó un complejo periodo de adaptación que la relegó a la zona baja de la tabla en sus inicios, no sin antes consagrarse como una auténtica «mata-gigantes» al eliminar a Los Astros de Houston en la competición de copa. Tras aquel bautismo de fuego, la franquicia protagonizó en su segunda campaña la progresión más espectacular en la historia de la asociación, escalando de forma incontestable hasta un histórico cuarto puesto.",
   },
@@ -52,6 +54,7 @@ const franchises = [
   {
     name: "Kingsbury Albion",
     image: "/franchises/Kingsbury Albion.jpg",
+    manager: "Alberto",
     description:
       "Eje central de la asociación y génesis sobre la cual se erigió la historia de la competición, la escuadra del Presidente se ha consolidado indiscutiblemente como la franquicia más regular, sólida y temible de todos los tiempos. Compitiendo de manera permanente en la cúspide de la tabla, la trayectoria del club está marcada por el temple competitivo: tras ver escaparse un título liguero en el tramo final de la campaña inaugural, resurge en el ciclo posterior con una actuación magistral para coronarse Campeón Absoluto de la Liga.",
   },
@@ -64,6 +67,7 @@ const franchises = [
   {
     name: "Catenaccio Haram FC",
     image: "/franchises/Catenaccio Haram FC.jpg",
+    manager: "Lorenzo",
     description:
       "Procedente de Italia e inspirada en la época dorada de la Serie A, aquel periodo glorioso en que el fútbol transalpino dominaba el panorama internacional con su implacable solidez defensiva y rigor táctico, esta escuadra originaria se erige como una de las más temidas y competitivas de la asociación. Respaldada por el prestigio de haber conquistado múltiples ediciones del certamen de Fantasy de la Serie A, la entidad traslada todo su oficio y mentalidad ganadora al circuito inglés.",
   },

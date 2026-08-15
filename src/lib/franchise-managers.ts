@@ -14,4 +14,20 @@ export const FRANCHISE_MANAGERS: Record<
     franchise: "Papi Boris FC",
     image: "/franchises/Papi Boris FC.jpg",
   },
+  "cr7cristianoelanimal@gmail.com": {
+    franchise: "Kingsbury Albion",
+    image: "/franchises/Kingsbury Albion.jpg",
+  },
+  "damir.cardona@icloud.com": {
+    franchise: "El Pantano 913 FC",
+    image: "/franchises/El Pantano 913 FC.jpg",
+  },
+  "javier.sardinas@gmail.com": {
+    franchise: "Meet Your Daddy",
+    image: "/franchises/Meet Your Daddy.jpg",
+  },
+  "elflacoborgo98@gmail.com": {
+    franchise: "Catenaccio Haram FC",
+    image: "/franchises/Catenaccio Haram FC.jpg",
+  },
 };
