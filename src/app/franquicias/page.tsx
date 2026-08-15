@@ -38,6 +38,7 @@ const franchises = [
   {
     name: "Papi Boris FC",
     image: "/franchises/Papi Boris FC.jpg",
+    manager: "Gabriel",
     description:
       "Inspirada en el linaje y la mística del legendario Manchester United, esta entidad fundadora se ha erigido como una de las más sólidas y constantes de la asociación, manteniendo un rendimiento competitivo de alto nivel a lo largo de cada una de las temporadas disputadas. Anteriormente conocida como Bugarrones United, la escuadra ha destacado históricamente por desplegar un estilo de juego profundamente táctico, ordenado y enmarcado en el más estricto sentido del juego limpio.",
   },
@@ -122,6 +123,12 @@ export default async function FranquiciasPage() {
               <h2 className="mt-5 text-2xl font-bold leading-tight text-cream-100">
                 {franchise.name}
               </h2>
+
+              {franchise.manager && (
+                <p className="mt-1 text-sm font-medium text-gold-400">
+                  Manager: {franchise.manager}
+                </p>
+              )}
 
               <p className="mt-4 text-base leading-7 text-cream-100/80">
                 {franchise.description}
