@@ -24,12 +24,7 @@ function MemberAvatar({ name, image }: { name: string; image?: string }) {
   if (image) {
     return (
       <div className="relative h-14 w-14 overflow-hidden rounded-full border border-gold-500/70 shadow-[0_0_24px_rgba(233,0,127,0.16)]">
-        <Image
-          src={image}
-          alt={name}
-          fill
-          className="scale-125 object-cover object-center"
-        />
+        <Image src={image} alt={name} fill className="object-contain" />
       </div>
     );
   }
