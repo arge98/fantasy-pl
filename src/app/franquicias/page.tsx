@@ -26,6 +26,7 @@ const franchises = [
   {
     name: "Narra Football Federation",
     image: "/franchises/Narra Football Federation.jpg",
+    manager: "Argelio",
     description:
       "Surgida en la temporada inaugural de 2024, esta escuadra atravesó un complejo periodo de adaptación que la relegó a la zona baja de la tabla en sus inicios, no sin antes consagrarse como una auténtica «mata-gigantes» al eliminar a Los Astros de Houston en la competición de copa. Tras aquel bautismo de fuego, la franquicia protagonizó en su segunda campaña la progresión más espectacular en la historia de la asociación, escalando de forma incontestable hasta un histórico cuarto puesto.",
   },
