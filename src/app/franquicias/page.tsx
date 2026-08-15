@@ -6,10 +6,11 @@ import Header from "@/components/Header";
 
 const franchises = [
   {
-    name: "Ariel's Avengers",
-    image: "/franchises/Ariel's Avengers.jpg",
+    name: "Real Banquillo CF",
+    image: "/franchises/Real Banquillo CF.jpg",
+    manager: "Dariel",
     description:
-      "La escuadra debuta oficialmente en la presente temporada envuelta en un halo de expectación e incertidumbre respecto a su planteamiento táctico, propuesta estratégica y estilo de juego. Su incorporación añade un elemento inédito a la dinámica de la asociación, donde la incógnita sobre su verdadero alcance deportivo quedará despejada en el terreno de juego, midiendo si posee el temple y la solvencia necesarios para estar a la altura de las exigencias competitivas de la Liga.",
+      "Nuevo integrante de la liga y debutante en Fantasy, miembro de una familia con tradición en el mundo del Fantasy. Llega con mucho ánimo y ganas de demostrar todo lo que vale",
   },
   {
     name: "Meet Your Daddy",
@@ -28,13 +29,14 @@ const franchises = [
   {
     name: "Narra Football Federation",
     image: "/franchises/Narra Football Federation.jpg",
-    manager: "Argel",
+    manager: "Argelio",
     description:
       "Surgida en la temporada inaugural de 2024, esta escuadra atravesó un complejo periodo de adaptación que la relegó a la zona baja de la tabla en sus inicios, no sin antes consagrarse como una auténtica «mata-gigantes» al eliminar a Los Astros de Houston en la competición de copa. Tras aquel bautismo de fuego, la franquicia protagonizó en su segunda campaña la progresión más espectacular en la historia de la asociación, escalando de forma incontestable hasta un histórico cuarto puesto.",
   },
   {
     name: "Dinastia FC",
     image: "/franchises/Dinastia FC.jpg",
+    manager: "Daniel",
     description:
       "Establecida en el estado de Texas como una de las instituciones originarias de la asociación, esta escuadra ostenta una de las trayectorias más intensas y controversiales de la competición. Antiguamente conocida como Los Astros de Houston, la franquicia es coprotagonista del clásico más encarnizado de la Liga frente a Narra Football Federation, erigiendo una rivalidad histórica de época.",
   },
@@ -48,6 +50,7 @@ const franchises = [
   {
     name: "AFC Richmond",
     image: "/franchises/AFC Richmond.jpg",
+    manager: "Jorge",
     description:
       "Integrada al circuito competitivo desde la temporada fundacional, esta escuadra se distingue por su probada constancia y por atesorar ya un trofeo oficial en sus vitrinas tras haberse coronado campeona del torneo de copa. Con una identidad táctica innegociable, la franquicia se ha caracterizado históricamente por mantener un comportamiento regular y sólido, asentándose con solvencia en la zona media-alta de la clasificación.",
   },
@@ -61,6 +64,7 @@ const franchises = [
   {
     name: "FC Jose Marti",
     image: "/franchises/FC Jose Marti.jpg",
+    manager: "Yohan",
     description:
       "Inspirada en el pensamiento, la mística y el ideario del Apóstol, esta escuadra originaria ocupa un lugar de honor en los anales de la asociación al haberse consagrado como el primer Campeón de Liga en la historia de la competición, firmando además un histórico e inédito doblete al conquistar la copa en esa misma campaña inaugural. Tras rozar el cielo institucional, la franquicia experimentó un drástico repliegue que la llevó a ocupar los puestos bajos de la tabla en el curso posterior; sin embargo, encara este nuevo año con la firme determinación de apelar a su estirpe ganadora.",
   },
@@ -74,12 +78,14 @@ const franchises = [
   {
     name: "Versalles Vendetta FC",
     image: "/franchises/Versalles Vendetta FC.jpg",
+    manager: "Ricardo",
     description:
       "Rindiendo un emotivo homenaje en su denominación al barrio humilde que vio nacer y crecer a su presidente, esta escuadra originaria se ha ganado el afecto y la simpatía unánime de toda la comunidad por su autenticidad y carisma. Aunque en el terreno puramente competitivo la fortuna no le ha acompañado en los cursos anteriores, relegándola a la zona baja de la clasificación, la entidad encara esta tercera temporada con un cambio de rumbo estratégico fundamental.",
   },
   {
     name: "Los Repas",
     image: "/franchises/Los Repas.jpg",
+    manager: "Pedro",
     description:
       "Corazón de hierro y espíritu incansable, combatientes que no se rinden hasta el silbato final.",
   },
