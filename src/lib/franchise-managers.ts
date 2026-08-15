@@ -30,4 +30,26 @@ export const FRANCHISE_MANAGERS: Record<
     franchise: "Catenaccio Haram FC",
     image: "/franchises/Catenaccio Haram FC.jpg",
   },
+  "darielrfc97@gmail.com": {
+    franchise: "Real Banquillo CF",
+    image: "/franchises/Real Banquillo CF.jpg",
+  },
+  "1987adadd@gmail.com": {
+    franchise: "Dinastia FC",
+    image: "/franchises/Dinastia FC.jpg",
+  },
+  "jldg2397@gmail.com": {
+    franchise: "AFC Richmond",
+    image: "/franchises/AFC Richmond.jpg",
+  },
+  "ricky970812@gmail.com": {
+    franchise: "Versalles Vendetta FC",
+    image: "/franchises/Versalles Vendetta FC.jpg",
+  },
+  "phadfegpacheco@gmail.com": {
+    franchise: "Los Repas",
+    image: "/franchises/Los Repas.jpg",
+  },
+  // Yohan -> FC Jose Marti confirmed, but he's not in league_members yet
+  // (email still unknown) — add him here once he's added to the DB.
 };
