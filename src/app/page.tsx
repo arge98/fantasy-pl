@@ -3,6 +3,7 @@ import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
 import StadiumBackground from "./stadium-background";
 import Header from "@/components/Header";
+import { FRANCHISE_MANAGERS } from "@/lib/franchise-managers";
 
 type Member = {
   email: string;
@@ -19,7 +20,15 @@ function initials(name: string) {
     .toUpperCase();
 }
 
-function MemberAvatar({ name }: { name: string }) {
+function MemberAvatar({ name, image }: { name: string; image?: string }) {
+  if (image) {
+    return (
+      <div className="relative h-14 w-14 overflow-hidden rounded-full border border-gold-500/70 shadow-[0_0_24px_rgba(233,0,127,0.16)]">
+        <Image src={image} alt={name} fill className="object-cover" />
+      </div>
+    );
+  }
+
   return (
     <div className="flex h-14 w-14 items-center justify-center rounded-full border border-gold-500/70 bg-navy-950/90 text-sm font-semibold text-gold-300 shadow-[0_0_24px_rgba(233,0,127,0.16)]">
       {initials(name)}
@@ -106,7 +115,10 @@ export default async function Home() {
                 key={member.email}
                 className="flex flex-col items-center gap-2 text-center"
               >
-                <MemberAvatar name={member.display_name} />
+                <MemberAvatar
+                  name={member.display_name}
+                  image={FRANCHISE_MANAGERS[member.email]?.image}
+                />
                 <span className="text-xs text-cream-100/85">
                   {member.display_name}
                   {member.is_admin && (
