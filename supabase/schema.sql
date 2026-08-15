@@ -24,5 +24,12 @@ values
   ('argelrh9@gmail.com', 'Argel', true),
   ('gabilondo12321@gmail.com', 'Gabriel', false),
   ('javier.sardinas@gmail.com', 'Javier', false),
-  ('cr7cristianoelanimal@gmail.com', 'Alberto', false)
+  ('cr7cristianoelanimal@gmail.com', 'Alberto', false),
+  ('damir.cardona@icloud.com', 'Damir', false),
+  ('darielrfc97@gmail.com', 'Dariel', false),
+  ('1987adadd@gmail.com', 'Daniel (La Bestia)', false),
+  ('jldg2397@gmail.com', 'Jorge', false),
+  ('phadfegpacheco@gmail.com', 'Pedro', false),
+  ('elflacoborgo98@gmail.com', 'Lorenzo', false),
+  ('ricky970812@gmail.com', 'Ricardo', false)
 on conflict (email) do nothing;
